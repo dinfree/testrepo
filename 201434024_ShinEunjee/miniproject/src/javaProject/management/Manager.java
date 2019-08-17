@@ -157,6 +157,7 @@ public class Manager implements IManage {
 			while(!userSeat.containsValue(inputInt)) {
 				System.out.println("해당 좌석이 비어있습니다. 다시 선택하세요");
 				inputInt=scan.nextInt();
+				scan.nextLine();
 			}
 		    for(Member m: userSeat.keySet()) {
 		    	if(userSeat.get(m)==inputInt) {
@@ -186,10 +187,12 @@ public class Manager implements IManage {
 		//좌석 매칭(해시맵 생성)
 		System.out.println("원하는 좌석번호: ");
 		inputInt=scan.nextInt();
+		scan.nextLine();
 		//이미 번호가 존재하면 등록 불가; 없으면 등록
 		while(userSeat.containsValue(inputInt)) {
 			System.out.println("불가능한 좌석입니다. 다른 번호를 선택해주세요: ");
 			inputInt=scan.nextInt();
+			scan.nextLine();
 		}
 		//변경: 인스턴스 변수가 이미 hash에 등록되어있으므로 seatNo 값 변경(put, replace)
 		//지정: 인스턴스 변수가 hash에 등록되어 있지 않음-> 새로 등록(put)
@@ -227,6 +230,7 @@ public class Manager implements IManage {
 		while(sel>=userList.size()) {
 			System.out.println("해당 회원이 존재하지 않습니다. 다시 선택하세요: ");
 			sel=scan.nextInt();
+			scan.nextLine();
 		}
 		member=userList.get(sel);
 		System.out.println(member.getName()+"회원 선택됨");
@@ -244,18 +248,21 @@ public class Manager implements IManage {
 		case 2:
 			System.out.print("나이 입력: ");
 			inputInt= scan.nextInt();
+			scan.nextLine();
 			member.setAge(inputInt);
 			System.out.println("나이: "+inputInt+" 수정 완료");
 			break;
 		case 3:
 			System.out.print("직업 입력: ");
 			inputStr=scan.nextLine();
+			scan.nextLine();
 			member.setJob(inputStr);
 			System.out.println("직업: "+inputStr+" 수정 완료");
 			break;
 		case 4:
 			System.out.print("등록일수 입력: ");
 			inputInt=scan.nextInt();
+			scan.nextLine();
 			member.setPeriod(inputInt);
 			System.out.println("등록일수: "+inputInt+" 수정 완료");
 			break;
@@ -266,15 +273,15 @@ public class Manager implements IManage {
 			System.out.println("잘못된 번호입니다. 처음 화면으로 돌아갑니다.");
 			editMember();
 		}
-		System.out.println("1. 메인화면");
+		System.out.println("1. 메인화면 | 2. 회원정보 수정");
 		sel=scan.nextInt();
 		scan.nextLine();
 		switch(sel) {
-		case 1:
-			start();
+		case 2:
+			editMember();
 			break;
 		default:
-			editMember();
+			start();
 		}
 	}
 	
