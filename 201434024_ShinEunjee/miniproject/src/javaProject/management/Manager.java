@@ -127,7 +127,7 @@ public class Manager implements IManage {
 	
 	@Override
 	public void curSeat() {
-		System.out.printf("현재 등록 가능한 좌석은 %d개 입니다.\n",(30-userSeat.size()));
+		System.out.printf("현재 등록 가능한 좌석은 %d개 입니다.\n",(20-userSeat.size()));
 		System.out.println("입실 현황");
 		System.out.println("=============================================");
 		for(Member m: userSeat.keySet()) {
@@ -175,6 +175,9 @@ public class Manager implements IManage {
 		    case 2:
 		    	manageStatus(member);
 		    	break;
+		    default:
+		    	System.out.println("잘못된 입력입니다. 처음 화면으로 돌아갑니다.");
+		    	curSeat();
 		    }
 			break;
 		default:
@@ -273,16 +276,7 @@ public class Manager implements IManage {
 			System.out.println("잘못된 번호입니다. 처음 화면으로 돌아갑니다.");
 			editMember();
 		}
-		System.out.println("1. 메인화면 | 2. 회원정보 수정");
-		sel=scan.nextInt();
-		scan.nextLine();
-		switch(sel) {
-		case 2:
-			editMember();
-			break;
-		default:
-			start();
-		}
+		System.out.println("메인화면으로 돌아갑니다.");
+		start();
 	}
-	
 }
