@@ -153,6 +153,7 @@ public class Manager implements IManage {
 		case 2:
 			System.out.println("변경할 좌석번호를 선택하세요: ");
 			inputInt=scan.nextInt();
+			scan.nextLine();
 			while(!userSeat.containsValue(inputInt)) {
 				System.out.println("해당 좌석이 비어있습니다. 다시 선택하세요");
 				inputInt=scan.nextInt();
@@ -163,7 +164,17 @@ public class Manager implements IManage {
 		    		break;
 		    	}
 		    }
-			setSeat(member);
+		    System.out.println("1. 좌석 번호 변경 | 2. 입실 상태 변경");
+		    sel=scan.nextInt();
+		    scan.nextLine();
+		    switch(sel) {
+		    case 1:
+		    	setSeat(member);
+		    	break;
+		    case 2:
+		    	manageStatus(member);
+		    	break;
+		    }
 			break;
 		default:
 			curSeat();
@@ -186,6 +197,25 @@ public class Manager implements IManage {
 		userSeat.put(m, inputInt);
 		System.out.println("등록/수정 완료. 등록된 좌석을 조회합니다.");
 		curSeat();
+	}
+	
+	public void manageStatus(Member m) {
+		System.out.println("1. 입실 | 2. 퇴실");
+    	sel=scan.nextInt();
+    	scan.nextLine();
+    	switch(sel) {
+    	case 1:
+    		m.checkin();
+    		curSeat();
+    		break;
+    	case 2:
+    		m.checkout();
+    		curSeat();
+    		break;
+    	default:
+    		System.out.println("잘못된 입력입니다. 다시 선택하세요");
+    		manageStatus(m);
+    	}
 	}
 	
 	@Override
@@ -247,6 +277,5 @@ public class Manager implements IManage {
 			editMember();
 		}
 	}
-
 	
 }

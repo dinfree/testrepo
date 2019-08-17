@@ -21,11 +21,13 @@ public class Member {
 	}
 
 	public void checkin() {
-		
+		System.out.println(this.name+" 입실합니다.");
+		this.status= 1;
 	}
 	
 	public void checkout() {
-		
+		System.out.println(this.name+" 퇴실합니다.");
+		this.status= 0;
 	}
 
 	public String getName() {

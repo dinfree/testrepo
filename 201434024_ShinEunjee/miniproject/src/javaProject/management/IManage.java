@@ -8,5 +8,5 @@ public interface IManage {
 	void setSeat(Member m);
 	void curSeat();
 	void defaultSet();
-	
+	void manageStatus(Member m);
 }
