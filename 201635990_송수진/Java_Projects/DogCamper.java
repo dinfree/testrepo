@@ -161,9 +161,9 @@ public class DogCamper implements IDogCamper {
 											
 						case 중형견: if(campersDog == DogType.대형견) {
 							System.out.println(bcs.campName+"의 반려견 허용범위를 넘어 예약이 불가합니다.");
-						}else bcs.countRoom();
-						fw.write("\r\n["+campers[selCamper].getName()+"]   <"+campers[selCamper].getDogType()+
-								">   예약완료");break;
+						}else {bcs.countRoom();
+							fw.write("\r\n["+campers[selCamper].getName()+"]   <"+campers[selCamper].getDogType()+
+							">   예약완료");}break;
 								
 						case 소형견: if(campersDog == DogType.소형견) {
 							bcs.countRoom();
